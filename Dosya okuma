@@ -27,3 +27,6 @@ abuys=pd.read_csv('abuyss.dat')
 ################ Bilgisayardan çekme ##################
 from google.colab import files
 files.upload()
+################################# drive##########33
+from google.colab import drive
+drive.mount('/content/drive')
