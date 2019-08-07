@@ -1,0 +1,29 @@
+from google.colab import files
+!pip install -U -q PyDrive
+from pydrive.auth import GoogleAuth
+from pydrive.drive import GoogleDrive
+from google.colab import auth
+from oauth2client.client import GoogleCredentials
+
+auth.authenticate_user()
+gauth = GoogleAuth()
+gauth.credentials = GoogleCredentials.get_application_default()
+drive = GoogleDrive(gauth)
+
+file_list = drive.ListFile({'q': "'1vFtqNYrhQjhRNX1kPRsRextZG8yOIh9i' in parents and trashed=false"}).GetList()
+for file1 in file_list:
+        print('title: %s, id: %s' % (file1['title'], file1['id']))
+
+#     tra = drive.CreateFile({'id': '1E_IyBNBQIEdKBuhHB9q2npd31jAyIplv'})
+#     tra.GetContentFile('event_train_full.txt')
+
+#     tes = drive.CreateFile({'id': '1IAxUAyfwhI-HBU44870czMsZpGPmPdBy'})
+#     tes.GetContentFile('event_test.txt')
+tes = drive.CreateFile({'id': '1vFtqNYrhQjhRNX1kPRsRextZG8yOIh9i'})
+tes.GetContentFile('abuyss.dat')
+
+abuys=pd.read_csv('abuyss.dat')
+
+################ Bilgisayardan çekme ##################
+from google.colab import files
+files.upload()
