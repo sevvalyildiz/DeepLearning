@@ -1,0 +1,26 @@
+from sklearn.model_selection import train_test_split
+x_train, x_test, y_train, y_test = train_test_split(  B.iloc[:, 10],species,test_size=0.33,random_state=0)
+
+
+# DecisionTreeClassifier sınıfını import ettik
+from sklearn.tree import DecisionTreeClassifier
+
+# DecisionTreeClassifier sınıfından bir nesne ürettik
+dtc = DecisionTreeClassifier(random_state=0)
+
+# Makineyi eğitiyoruz
+dtc.fit(x_train,y_train)
+
+# Test veri kümemizi verdik ve tahmin işlemini gerçekleştirdik
+result = dtc.predict(x_test)
+
+from sklearn.metrics import confusion_matrix
+# Parametre olarak karşılaştıracağımız verileri giriyoruz.
+# y_test : Gerçek test Verisi
+# result : x_test verisinden tahmin ettiğimiz veriler
+# Confusion Matrix Sonucu :
+# [[16  0  0]
+#  [ 0 18  1]
+#  [ 0  0 15]]
+cm = confusion_matrix(y_test,result)
+print(cm)
